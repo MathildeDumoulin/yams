@@ -2,7 +2,6 @@ package yams_maths;
 
 public class Main {
 	public static void main(String[] args) {
-		System.out.println("Hello world");
 		Dice de1 = new Dice();
 		Dice de2 = new Dice();
 		Dice de3 = new Dice();
