@@ -13,11 +13,11 @@ public class Figure {
 	public void brelan(Dice d1, Dice d2, Dice d3, Dice d4, Dice d5) {
 		List<Integer> listeDes = new ArrayList<Integer>(5);
 		
-		listeDes.add(d1.getValeur());
-		listeDes.add(d2.getValeur());
-		listeDes.add(d3.getValeur());
-		listeDes.add(d4.getValeur());
-		listeDes.add(d5.getValeur());
+		listeDes.add(d1.getValue());
+		listeDes.add(d2.getValue());
+		listeDes.add(d3.getValue());
+		listeDes.add(d4.getValue());
+		listeDes.add(d5.getValue());
 		
 		Collections.sort(listeDes);
 		
@@ -31,11 +31,11 @@ public class Figure {
 	public void carre(Dice d1, Dice d2, Dice d3, Dice d4, Dice d5) {
 		List<Integer> listeDes = new ArrayList<Integer>(5);
 		
-		listeDes.add(d1.getValeur());
-		listeDes.add(d2.getValeur());
-		listeDes.add(d3.getValeur());
-		listeDes.add(d4.getValeur());
-		listeDes.add(d5.getValeur());
+		listeDes.add(d1.getValue());
+		listeDes.add(d2.getValue());
+		listeDes.add(d3.getValue());
+		listeDes.add(d4.getValue());
+		listeDes.add(d5.getValue());
 		
 		Collections.sort(listeDes);
 		
@@ -49,11 +49,11 @@ public class Figure {
 	public void full(Dice d1, Dice d2, Dice d3, Dice d4, Dice d5) {
 		List<Integer> listeDes = new ArrayList<Integer>(5);
 		
-		listeDes.add(d1.getValeur());
-		listeDes.add(d2.getValeur());
-		listeDes.add(d3.getValeur());
-		listeDes.add(d4.getValeur());
-		listeDes.add(d5.getValeur());
+		listeDes.add(d1.getValue());
+		listeDes.add(d2.getValue());
+		listeDes.add(d3.getValue());
+		listeDes.add(d4.getValue());
+		listeDes.add(d5.getValue());
 		
 		Collections.sort(listeDes);
 		
@@ -67,16 +67,16 @@ public class Figure {
 	public void suite(Dice d1, Dice d2, Dice d3, Dice d4, Dice d5) {
 		List<Integer> listeDes = new ArrayList<Integer>(5);
 		
-		listeDes.add(d1.getValeur());
-		listeDes.add(d2.getValeur());
-		listeDes.add(d3.getValeur());
-		listeDes.add(d4.getValeur());
-		listeDes.add(d5.getValeur());
+		listeDes.add(d1.getValue());
+		listeDes.add(d2.getValue());
+		listeDes.add(d3.getValue());
+		listeDes.add(d4.getValue());
+		listeDes.add(d5.getValue());
 		
 		Collections.sort(listeDes);
 		
 		if((listeDes.get(0).equals(1) && listeDes.get(1).equals(2) && listeDes.get(2).equals(3) && listeDes.get(3).equals(4) && listeDes.get(5).equals(5))
-				||(listeDes.get(0).equals(2) && listeDes.get(1).equals(3) && listeDes.get(2).equals(4) && listeDes.get(3).equals(5) && listeDes.get(5).equals(6))
+				||(listeDes.get(0).equals(2) && listeDes.get(1).equals(3) && listeDes.get(2).equals(4) && listeDes.get(3).equals(5) && listeDes.get(4).equals(6))
 				){
 			System.out.println("SUITE");
 		}
@@ -85,11 +85,11 @@ public class Figure {
 	public void yams(Dice d1, Dice d2, Dice d3, Dice d4, Dice d5) {
 		List<Integer> listeDes = new ArrayList<Integer>(5);
 		
-		listeDes.add(d1.getValeur());
-		listeDes.add(d2.getValeur());
-		listeDes.add(d3.getValeur());
-		listeDes.add(d4.getValeur());
-		listeDes.add(d5.getValeur());
+		listeDes.add(d1.getValue());
+		listeDes.add(d2.getValue());
+		listeDes.add(d3.getValue());
+		listeDes.add(d4.getValue());
+		listeDes.add(d5.getValue());
 		
 		Collections.sort(listeDes);
 		
