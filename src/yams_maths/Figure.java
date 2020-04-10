@@ -75,7 +75,7 @@ public class Figure {
 		
 		Collections.sort(listeDes);
 		
-		if((listeDes.get(0).equals(1) && listeDes.get(1).equals(2) && listeDes.get(2).equals(3) && listeDes.get(3).equals(4) && listeDes.get(5).equals(5))
+		if((listeDes.get(0).equals(1) && listeDes.get(1).equals(2) && listeDes.get(2).equals(3) && listeDes.get(3).equals(4) && listeDes.get(4).equals(5))
 				||(listeDes.get(0).equals(2) && listeDes.get(1).equals(3) && listeDes.get(2).equals(4) && listeDes.get(3).equals(5) && listeDes.get(4).equals(6))
 				){
 			System.out.println("SUITE");
