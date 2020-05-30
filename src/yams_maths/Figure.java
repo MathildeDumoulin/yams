@@ -25,7 +25,9 @@ public class Figure {
 				||(listeDes.get(1).equals(listeDes.get(2)) && listeDes.get(2).equals(listeDes.get(3)))
 				||(listeDes.get(2).equals(listeDes.get(3)) && listeDes.get(3).equals(listeDes.get(4)))){
 			System.out.println("BRELAN");
+			//return listeDes.get(0) + listeDes.get(1) + listeDes.get(2) + listeDes.get(3) + listeDes.get(4) ;
 		}
+		//return 0;
 	}
 	
 	public void carre(Dice d1, Dice d2, Dice d3, Dice d4, Dice d5) {
@@ -43,7 +45,9 @@ public class Figure {
 				|| (listeDes.get(1).equals(listeDes.get(2)) && listeDes.get(2).equals(listeDes.get(3)) && listeDes.get(3).equals(listeDes.get(4)))
 				){
 			System.out.println("CARRE");
+			//return listeDes.get(0) + listeDes.get(1) + listeDes.get(2) + listeDes.get(3) + listeDes.get(4) ;
 		}
+		//return 0;
 	}
 	
 	public void full(Dice d1, Dice d2, Dice d3, Dice d4, Dice d5) {
@@ -61,7 +65,9 @@ public class Figure {
 				|| (listeDes.get(0).equals(listeDes.get(1)) && listeDes.get(1).equals(listeDes.get(2)) && listeDes.get(3).equals(listeDes.get(4)))
 				){
 			System.out.println("FULL");
+			//return 25;
 		}
+		//return 0;
 	}
 	
 	public void suite(Dice d1, Dice d2, Dice d3, Dice d4, Dice d5) {
@@ -79,7 +85,9 @@ public class Figure {
 				||(listeDes.get(0).equals(2) && listeDes.get(1).equals(3) && listeDes.get(2).equals(4) && listeDes.get(3).equals(5) && listeDes.get(4).equals(6))
 				){
 			System.out.println("SUITE");
+			//return 40:
 		}
+		// return 0;
 	}
 	
 	public void yams(Dice d1, Dice d2, Dice d3, Dice d4, Dice d5) {
@@ -95,7 +103,9 @@ public class Figure {
 		
 		if((listeDes.get(0).equals(listeDes.get(1)) && listeDes.get(1).equals(listeDes.get(2)) && listeDes.get(2).equals(listeDes.get(3)) && listeDes.get(3).equals(listeDes.get(4)))){
 			System.out.println("YAMS");
+			//return 50;
 		}
+		//return 0;
 	}
 	
 }

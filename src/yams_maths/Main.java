@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
+		
+		/*INITIALISATION*/ 
+		
 		Dice de1 = new Dice();
 		Dice de2 = new Dice();
 		Dice de3 = new Dice();
@@ -11,15 +14,19 @@ public class Main {
 		Dice de5 = new Dice();
 		Figure figure = new Figure();
 		boolean app = true;
-
+		
+		Player player1 = new Player();
+		Player computer = new Player();
+		boolean computerTurn = false;
+		
+		/*BOUCLE APP*/
 		while(app){
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Appuyez sur l+Entrée pour lancer et q+Entrée pour quitter");
 			String clavier = sc.nextLine();
-			String lancer = "l";
-			String quitter = "q";
-
-			if (clavier.equals(lancer)){
+			
+			/*BOUCLE DE JEU*/
+			if (clavier.equals("l")){
 				de1.lancerDice();
 				de2.lancerDice();
 				de3.lancerDice();
@@ -32,10 +39,16 @@ public class Main {
 				figure.suite(de1, de2, de3, de4, de5);
 				figure.full(de1, de2, de3, de4, de5);
 				figure.yams(de1, de2, de3, de4, de5);
-			} else if(clavier.equals(quitter)){
+			} 
+			
+			/*QUITTER L'APP*/
+			else if(clavier.equals("q")){
 				sc.close();
 				app=false;
-			} else {
+			} 
+			
+			
+			else {
 				System.out.println("Vous n'avez pas appuyé sur les bonnes touches, veuillez recommencer");
 			}
 		}

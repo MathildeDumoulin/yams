@@ -44,4 +44,26 @@ public class Player {
 	public boolean hasCompletedSheet() {
 		return(brelan && carre && full && suite && yams);
 	}
+	
+	@Override 
+	public String toString() {
+		StringBuilder strb = new StringBuilder();
+		
+		if (brelan) strb.append("Brelan : OUI \n");
+		else strb.append("Brelan : NON \n");
+		
+		if (carre) strb.append("Carre : OUI \n");
+		else strb.append("Carre : NON \n");
+		
+		if (full) strb.append("Full : OUI \n");
+		else strb.append("Full : NON \n");
+		
+		if (suite) strb.append("Suite : OUI \n");
+		else strb.append("Suite : NON \n");
+		
+		if (yams) strb.append("Yams: OUI \n");
+		else strb.append("Yams : NON \n");
+		
+		return strb.toString();
+	}
 }
