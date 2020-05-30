@@ -27,6 +27,12 @@ public class Main {
 		/*BOUCLE APP*/
 		while(app){
 			
+			/*
+			player1.victory();
+			computer.defeat();
+			player1.defeat();
+			computer.victory();*/
+			
 			Scanner sc = new Scanner(System.in);
 			
 		
@@ -35,13 +41,18 @@ public class Main {
 				System.out.println("Appuyez sur l+Entrée pour lancer et q+Entrée pour quitter");
 				clavier = sc.nextLine();
 			}
-			else {
-				System.out.println("L'ordinateur joue");
-			}
+			
 			
 			/*BOUCLE DE JEU*/
 			if (clavier.equals("l") || computerTurn){
+				
+				/*INFORMATIONS DU TOUR*/
 				System.out.println("Tour n°" + nbTours + "\n");
+				if(computerTurn) {
+					System.out.println("L'ordinateur joue");
+				}else {
+					System.out.println("Votre tour");
+				}
 				
 				de1.lancerDice();
 				de2.lancerDice();
@@ -52,22 +63,20 @@ public class Main {
 				System.out.println("Lancer des dés : " + de1.getValue() + " " + de2.getValue() + " " + de3.getValue() + " " + de4.getValue() + " " + de5.getValue());
 				
 				/*ON AJOUTE LES POINTS A CELUI QUI JOUE*/
-				figure.brelan(de1, de2, de3, de4, de5);
-				figure.carre(de1, de2, de3, de4, de5);
-				figure.suite(de1, de2, de3, de4, de5);
-				figure.full(de1, de2, de3, de4, de5);
-				figure.yams(de1, de2, de3, de4, de5);
+				/*AFFICHAGE DES EVENTUELLES FIGURES REUSSIES*/
+				if(computerTurn) {
+					figure.checkFigure(de1,de2,de3,de4,de5, computer);
+				}else {
+					figure.checkFigure(de1,de2,de3,de4,de5, player1);
+				}
 				
 				/*UN DES JOUEURS A COMPLETE SA FICHE, FIN DE LA PARTIE*/
-				if(player1.hasCompletedSheet()) {
-					player1.victory();
-					computer.defeat();
-					System.out.println("leaving");
-					app = false;
-				}else if(computer.hasCompletedSheet()){
-					computer.victory();
-					player1.defeat();
-					System.out.println("leaving");
+				if(player1.hasCompletedSheet() || computer.hasCompletedSheet()) {
+					app = false;	
+				}
+				
+				/*ON A ATTEINT UN NOMBRE MAXIMAL DE 40 TOURS, FIN DE LA PARTIE*/
+				if(nbTours == 40) {
 					app = false;
 				}
 				
@@ -87,12 +96,24 @@ public class Main {
 				app=false;
 			} 
 			
-			
 			else {
 				System.out.println("Vous n'avez pas appuyé sur les bonnes touches, veuillez recommencer");
 			}
-			//System.out.println(computerTurn);
 		}
+		
+		if(nbTours >= 40 || player1.hasCompletedSheet() || computer.hasCompletedSheet()) {
+			System.out.println("Fin de la partie ! ");
+			if(player1.getScore() > computer.getScore()) {
+				player1.victory();
+				computer.defeat();
+			}else if(player1.getScore() < computer.getScore()) {
+				player1.defeat();
+				computer.victory();
+			}else {
+				System.out.println("Egalité des scores : tous les joueurs ont un score de " + player1.getScore() + " points");
+			}
+		}
+	
 	}
 }
 
