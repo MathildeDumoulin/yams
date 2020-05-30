@@ -1,5 +1,7 @@
 package yams_maths;
 
+import java.util.Objects;
+
 public class Player {
 	private boolean brelan = false;
 	private boolean carre = false;
@@ -7,9 +9,11 @@ public class Player {
 	private boolean suite = false;
 	private boolean yams = false;
 	private int score;
+	private final String name;
 	
-	public Player() {
+	public Player(String name) {
 		this.score = 0;
+		this.name = Objects.requireNonNull(name, "Le nom du joueur ne peut etre null");
 	}
 	
 	public int getScore() {
@@ -45,9 +49,18 @@ public class Player {
 		return(brelan && carre && full && suite && yams);
 	}
 	
+	public String victory() {
+		return(name + " remporte la partie avec " + score + " points \n");
+	}
+	public String defeat() {
+		return(name + " perd la partie avec " + score + " points \n");
+	}
+	
 	@Override 
 	public String toString() {
 		StringBuilder strb = new StringBuilder();
+		
+		strb.append(name).append("\n");
 		
 		if (brelan) strb.append("Brelan : OUI \n");
 		else strb.append("Brelan : NON \n");

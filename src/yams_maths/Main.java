@@ -14,19 +14,35 @@ public class Main {
 		Dice de5 = new Dice();
 		Figure figure = new Figure();
 		boolean app = true;
+		String clavier = "";
 		
-		Player player1 = new Player();
-		Player computer = new Player();
+		
+		/* L'ORDINATEUR COMMENCE */
+		Player player1 = new Player("Joueur1");
+		Player computer = new Player("Ordinateur");
 		boolean computerTurn = false;
+		
+		int nbTours = 1;
 		
 		/*BOUCLE APP*/
 		while(app){
+			
 			Scanner sc = new Scanner(System.in);
-			System.out.println("Appuyez sur l+Entrée pour lancer et q+Entrée pour quitter");
-			String clavier = sc.nextLine();
+			
+		
+			/*SI C'EST AU JOUEUR DE JOUER, IL PEUT LANCER LES DES*/
+			if(!computerTurn) {
+				System.out.println("Appuyez sur l+Entrée pour lancer et q+Entrée pour quitter");
+				clavier = sc.nextLine();
+			}
+			else {
+				System.out.println("L'ordinateur joue");
+			}
 			
 			/*BOUCLE DE JEU*/
-			if (clavier.equals("l")){
+			if (clavier.equals("l") || computerTurn){
+				System.out.println("Tour n°" + nbTours + "\n");
+				
 				de1.lancerDice();
 				de2.lancerDice();
 				de3.lancerDice();
@@ -34,11 +50,35 @@ public class Main {
 				de5.lancerDice();
 				
 				System.out.println("Lancer des dés : " + de1.getValue() + " " + de2.getValue() + " " + de3.getValue() + " " + de4.getValue() + " " + de5.getValue());
+				
+				/*ON AJOUTE LES POINTS A CELUI QUI JOUE*/
 				figure.brelan(de1, de2, de3, de4, de5);
 				figure.carre(de1, de2, de3, de4, de5);
 				figure.suite(de1, de2, de3, de4, de5);
 				figure.full(de1, de2, de3, de4, de5);
 				figure.yams(de1, de2, de3, de4, de5);
+				
+				/*UN DES JOUEURS A COMPLETE SA FICHE, FIN DE LA PARTIE*/
+				if(player1.hasCompletedSheet()) {
+					player1.victory();
+					computer.defeat();
+					System.out.println("leaving");
+					app = false;
+				}else if(computer.hasCompletedSheet()){
+					computer.victory();
+					player1.defeat();
+					System.out.println("leaving");
+					app = false;
+				}
+				
+				/*A LA FIN DE CHAQUE TOUR, ON AFFICHE LA FICHE DES JOUEURS*/
+				System.out.println(player1);
+				System.out.println(computer);
+				
+				computerTurn = !computerTurn;
+				
+				nbTours ++;
+				
 			} 
 			
 			/*QUITTER L'APP*/
@@ -51,6 +91,7 @@ public class Main {
 			else {
 				System.out.println("Vous n'avez pas appuyé sur les bonnes touches, veuillez recommencer");
 			}
+			//System.out.println(computerTurn);
 		}
 	}
 }
