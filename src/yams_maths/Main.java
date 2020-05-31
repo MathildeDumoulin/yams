@@ -59,26 +59,57 @@ public class Main {
 				de2.lancerDice2();
 				de3.lancerDice3(parametre);
 				de4.lancerDice4();
-				boolean choix = false;
-				while(!choix){
-					System.out.println("Appuyez sur [chiffre associé à la loi 1, 2, 3 ou 4]+Entrée pour sélectionner la loi suivi par le 5ème dé");
-					int loi5 = sc.nextInt();
-					if(loi5==1){
-						de5.lancerDice1();
-						choix = true;
-					} else if(loi5==2){
-						de5.lancerDice2();
-						choix = true;
-					} else if (loi5==3){
-						de5.lancerDice3(parametre);
-						choix = true;
-					} else if (loi5==4){
-						de5.lancerDice4();
-						choix = true;
-					} else {
-						System.out.println("Les seuls chiffre associés à des lois sont 1, 2, 3 et 4 pas : " + loi5);
+				if(!computerTurn) {
+					boolean choix = false;
+					while(!choix){
+						System.out.println("Appuyez sur [chiffre associé à la loi 1, 2, 3 ou 4]+Entrée pour sélectionner la loi suivi par le 5ème dé");
+						int loi5 = sc.nextInt();
+						if(loi5==1){
+							de5.lancerDice1();
+							sc.close();
+							choix = true;
+						} else if(loi5==2){
+							de5.lancerDice2();
+							sc.close();
+							choix = true;
+						} else if (loi5==3){
+							de5.lancerDice3(parametre);
+							sc.close();
+							choix = true;
+						} else if (loi5==4){
+							de5.lancerDice4();
+							sc.close();
+							choix = true;
+						} else {
+							System.out.println("Les seuls chiffre associés à des lois sont 1, 2, 3 et 4 pas : " + loi5);
+						}
 					}
-				}
+				} /*else {
+					boolean choix = false;
+					while(!choix){
+						int loi5 = (int)Math.random()*(5-1);
+						if(loi5==1){
+							de5.lancerDice1();
+							sc.close();
+							choix = true;
+						} else if(loi5==2){
+							de5.lancerDice2();
+							sc.close();
+							choix = true;
+						} else if (loi5==3){
+							de5.lancerDice3(parametre);
+							sc.close();
+							choix = true;
+						} else if (loi5==4){
+							de5.lancerDice4();
+							sc.close();
+							choix = true;
+						} else {
+							System.out.println("Les seuls chiffre associés à des lois sont 1, 2, 3 et 4 pas : " + loi5);
+						}
+					}
+				}*/
+				
 				
 				System.out.println("Lancer des dés : " + de1.getValue() + " " + de2.getValue() + " " + de3.getValue() + " " + de4.getValue() + " " + de5.getValue());
 				
