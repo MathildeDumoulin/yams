@@ -41,7 +41,8 @@ public class Main {
 				System.out.println("Appuyez sur l+Entrée pour lancer et q+Entrée pour quitter");
 				clavier = sc.nextLine();
 			}
-			
+
+			double parametre = Math.random()*(1);
 			
 			/*BOUCLE DE JEU*/
 			if (clavier.equals("l") || computerTurn){
@@ -55,10 +56,29 @@ public class Main {
 				}
 				
 				de1.lancerDice1();
-				de2.lancerDice();
-				de3.lancerDice();
-				de4.lancerDice();
-				de5.lancerDice();
+				de2.lancerDice2();
+				de3.lancerDice3(parametre);
+				de4.lancerDice4();
+				boolean choix = false;
+				while(!choix){
+					System.out.println("Appuyez sur [chiffre associé à la loi 1, 2, 3 ou 4]+Entrée pour sélectionner la loi suivi par le 5ème dé");
+					int loi5 = sc.nextInt();
+					if(loi5==1){
+						de5.lancerDice1();
+						choix = true;
+					} else if(loi5==2){
+						de5.lancerDice2();
+						choix = true;
+					} else if (loi5==3){
+						de5.lancerDice3(parametre);
+						choix = true;
+					} else if (loi5==4){
+						de5.lancerDice4();
+						choix = true;
+					} else {
+						System.out.println("Les seuls chiffre associés à des lois sont 1, 2, 3 et 4 pas : " + loi5);
+					}
+				}
 				
 				System.out.println("Lancer des dés : " + de1.getValue() + " " + de2.getValue() + " " + de3.getValue() + " " + de4.getValue() + " " + de5.getValue());
 				

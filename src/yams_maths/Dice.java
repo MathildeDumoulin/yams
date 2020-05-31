@@ -22,7 +22,7 @@ public class Dice {
         setValue((int)(1+ 6*Math.random()));
     }
     public void lancerDice1(){
-        boolean parite =loiBernoulli(0.5);
+        boolean parite =loiBernoulli(0.7);
         if (parite==true) {
             double tirage = (int)loiUniformeContinue(1, 4);
             if(tirage==1){
@@ -53,6 +53,29 @@ public class Dice {
     	int res = loiBinomiale(p);
     	setValue(res);
     }
+
+    public void lancerDice4(){
+        boolean parite =loiBernoulli(0.3);
+        if (parite==true) {
+            double tirage = (int)loiUniformeContinue(1, 4);
+            if(tirage==1){
+                setValue(2);
+            }else if(tirage==2){
+                setValue(4);
+            } else {
+                setValue(6);
+            }
+        } else {
+            int tirage =(int)loiUniformeContinue(1, 4);
+            if(tirage==1){
+                setValue(1);
+            }else if(tirage==2){
+                setValue(3);
+            } else {
+                setValue(5);
+            }
+        }
+    }
     
     public int loiBinomiale(double p) {
 		int count = 1;
@@ -76,7 +99,7 @@ public class Dice {
 
     public boolean loiBernoulli(double p){
         if (!(p >= 0.0 && p <= 1.0))
-            throw new IllegalArgumentException("probability p must be between 0.0 and 1.0: " + p);
+            throw new IllegalArgumentException("La probabilité doit être comprise entre 0.0 et 1.0, or: " + p);
         boolean result = true;
         if(loiUniformeContinue(0,1)-1 < p){
             result= true;
