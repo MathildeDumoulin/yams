@@ -3,6 +3,7 @@ package yams_maths;
 import java.util.Scanner;
 
 public class Main {
+	
 	public static void main(String[] args) {
 		
 		/*INITIALISATION*/ 
@@ -15,6 +16,7 @@ public class Main {
 		Figure figure = new Figure();
 		boolean app = true;
 		String clavier = "";
+		String askRelance = "";
 		
 		
 		/* L'ORDINATEUR COMMENCE */
@@ -23,6 +25,7 @@ public class Main {
 		boolean computerTurn = false;
 		
 		int nbTours = 1;
+		int choixLoi5 = 0;
 		
 		/*BOUCLE APP*/
 		while(app){
@@ -84,15 +87,19 @@ public class Main {
 					while(!choix){
 						
 						if(loi5==1){
+							choixLoi5 = 1;
 							de5.lancerDice1();
 							choix = true;
 						} else if(loi5==2){
+							choixLoi5 = 2;
 							de5.lancerDice2();
 							choix = true;
 						} else if (loi5==3){
+							choixLoi5 = 3;
 							de5.lancerDice3(parametre);
 							choix = true;
 						} else if (loi5==4){
+							choixLoi5 = 4;
 							de5.lancerDice4();
 							choix = true;
 						} else {
@@ -100,11 +107,80 @@ public class Main {
 						}
 					}
 					
-					
 				}
 				
-				
+				/*PREMIER JET DE DES*/
 				System.out.println("Lancer des dés : " + de1.getValue() + " " + de2.getValue() + " " + de3.getValue() + " " + de4.getValue() + " " + de5.getValue());
+				
+				/*LE JOUEUR PEUT EFFECTUER DEUX RELANCES ICI*/
+				if(!computerTurn) {
+					
+					/*On demande a l'utilisateur s'il veut effectuer une relance*/
+					int nbRelances = 0;
+					boolean relance = false;
+					
+					System.out.println("Souhaitez-vous relancer un ou plusieurs dés ? Oui : o | Non : n. Appuyer sur entrée pour confirmer \n");
+					askRelance = sc.nextLine();
+					while(!askRelance.equals("o") && !askRelance.equals("n")) {
+						askRelance = sc.nextLine();
+					}
+					
+					if(askRelance.equals("o")) {
+						while(!relance && nbRelances < 2) {
+							System.out.println("Indiquez les dés à relancer \n");
+							String desRelance= sc.nextLine();
+							while(!desRelance.contains("1") && !desRelance.contains("2") && !desRelance.contains("3") && !desRelance.contains("4")&& !desRelance.contains("5")) {
+								desRelance= sc.nextLine();
+								System.out.println("Erreur de saisie. Aucun des indices de des ne correspond. \n");	
+							}
+							/*Relance des dés correspondants*/
+							
+							if(desRelance.contains("1"))
+								de1.lancerDice1();
+							if(desRelance.contains("2"))
+								de2.lancerDice2();
+							if(desRelance.contains("3"))
+								de3.lancerDice3(parametre);
+							if(desRelance.contains("4"))
+								de4.lancerDice4();
+							if(desRelance.contains("5")) {
+								switch(choixLoi5) {
+									case 1:
+										de5.lancerDice1();
+										break;
+									case 2:
+										de5.lancerDice2();
+										break;
+									case 3:
+										de5.lancerDice3(parametre);
+										break;
+									case 4:
+										de5.lancerDice4();
+										break;
+									default:
+										de5.lancerDice1();
+										break;
+								}
+							}
+							System.out.println("Nouveau jet de dés : " + de1.getValue() + " " + de2.getValue() + " " + de3.getValue() + " " + de4.getValue() + " " + de5.getValue());
+							nbRelances++;
+							
+							if(nbRelances < 2) {
+								/*Nouvelle relance ?*/
+								System.out.println("Effectuer une autre relance ? Oui : o | Non : n. Appuyer sur entrée pour confirmer \\n");
+								askRelance = sc.nextLine();
+								while(!askRelance.equals("o") && !askRelance.equals("n")) {
+									askRelance = sc.nextLine();
+									System.out.println("Erreur de saisie. Oui : o | Non : n. Appuyer sur entrée pour confirmer \n");
+								}
+								if(askRelance.equals("n")) {
+									relance = true;
+								}
+							}
+							
+						}
+					}
+				}
 				
 				/*ON AJOUTE LES POINTS A CELUI QUI JOUE*/
 				/*AFFICHAGE DES EVENTUELLES FIGURES REUSSIES*/
