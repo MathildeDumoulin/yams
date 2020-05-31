@@ -43,6 +43,26 @@ public class Dice {
             }
         }
     }
+    
+    public void lancerDice2() {
+    	int res = (int) Math.floor(loiUniformeContinue(1,7));
+    	setValue(res);
+    }
+    
+    public void lancerDice3(double p) {
+    	int res = loiBinomiale(p);
+    	setValue(res);
+    }
+    
+    public int loiBinomiale(double p) {
+		int count = 1;
+		for(int i = 0; i < 5; i++) {
+			double rand = loiUniformeContinue(0,1)-1;
+			int plus = rand < p ? 1 : 0;
+			count += plus;
+		}
+		return count;
+	}
 
     //laws
     public static double loiUniformeContinue(int min, int max) {
