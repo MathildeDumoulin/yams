@@ -54,7 +54,7 @@ public class Main {
 					System.out.println("Votre tour");
 				}
 				
-				de1.lancerDice();
+				de1.lancerDice1();
 				de2.lancerDice();
 				de3.lancerDice();
 				de4.lancerDice();
