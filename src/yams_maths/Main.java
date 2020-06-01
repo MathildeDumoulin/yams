@@ -4,6 +4,34 @@ import java.util.Scanner;
 
 public class Main {
 	
+	public static void infosLois() {
+		System.out.println("------- INFOS LOIS DE PROBABILITES ------- \n");
+		System.out.println("Loi 1 : Bernoulli. Plus de chances d'avoir un nombre pair.");
+		System.out.println("Loi 2 : Loi uniforme discrète. C'est un dé tout à fait classique !");
+		System.out.println("Loi 3 : Loi binomiale. Plus de chances de tomber sur une certaine valeur");
+		System.out.println("Loi 4 : Bernoulli. Plus de chances d'avoir un nombre impair.");
+	}
+	
+	public static void infosParametre(double parametre) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Pendant ce tour, avec la loi binomiale (3) vous avez + de chances de faire un ");
+		if(parametre <= 0.17) {
+			sb.append("6");
+		}else if(parametre <= 0.33) {
+			sb.append("5");
+		}else if(parametre <= 0.5) {
+			sb.append("4");
+		}else if(parametre <= 0.67) {
+			sb.append("3");
+		}else if(parametre <= 0.83) {
+			sb.append("2");
+		}else {
+			sb.append("1");
+		}
+		sb.append("\n");
+		System.out.println(sb.toString());
+	}
+	
 	public static void main(String[] args) {
 		
 		/*INITIALISATION*/ 
@@ -45,7 +73,7 @@ public class Main {
 			if (clavier.equals("l") || computerTurn){
 				
 				/*INFORMATIONS DU TOUR*/
-				System.out.println("Tour n°" + nbTours + "\n");
+				System.out.println("-------------------------Tour n°" + nbTours + "-------------------------\n");
 				if(computerTurn) {
 					System.out.println("L'ordinateur joue");
 				}else {
@@ -57,9 +85,12 @@ public class Main {
 				de3.lancerDice3(parametre);
 				de4.lancerDice4();
 				if(!computerTurn) {
+					infosLois();
+					infosParametre(parametre);
 					boolean choix = false;
 					while(!choix){
 						System.out.println("Appuyez sur [chiffre associé à la loi 1, 2, 3 ou 4]+Entrée pour sélectionner la loi suivi par le 5ème dé");
+						
 						int loi5 = sc.nextInt();
 						if(loi5==1){
 							de5.lancerDice1();
@@ -82,7 +113,6 @@ public class Main {
 					
 					boolean choix = false;
 					int loi5 = (int)Math.floor(Math.random()*(5-1)+1);
-					System.out.println("VALEUR DE LOI5 : " + loi5);
 					
 					while(!choix){
 						
